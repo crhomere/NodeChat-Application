@@ -21,8 +21,13 @@ The server listens for the following events:
 When a socket connects, the server sends a connection event to the socket with no data. When a socket emits a channel-join event, the server adds the socket to the specified channel (if it's not already in the channel) and updates the number of participants in the channel. When a socket emits a send-message event, the server broadcasts the message to all connected sockets. When a socket disconnects, the server removes the socket from the channel it was connected to (if it was in a channel) and updates the number of participants in the channel.
 
 To start up the server run the following commands in console: 
-* tsc server.ts: This complies the typescript code into javascript
-* node server.js: This starts the server
+## 'tsc server.ts' 
+  * This complies the typescript code into javascript
+## 'node server.js'
+  * This starts the server
+
+A successful start of the sever should look like the following: 
+<img width="642" alt="image" src="https://user-images.githubusercontent.com/87340993/210110739-2d86478b-cae3-4d65-b9e2-f1e04f8d0e58.png">
 
 # Chat
 
@@ -80,6 +85,9 @@ To run the test script for this project run the following command:
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+A successful test looks like the following:
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/87340993/210110550-304dc5b6-11d7-4813-aabc-57079ee89ab7.png">
 
 
 
