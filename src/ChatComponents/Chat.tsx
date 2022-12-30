@@ -1,8 +1,8 @@
-import React from 'react'; // import the React library
-import socketClient from 'socket.io-client'; // import the socket.io client library
-import { ChannelList } from './ChannelList'; // import the ChannelList component
-import './chat.scss'; // import the chat styles
-import { MessagesPanel } from './MessagesPanel'; // import the MessagesPanel component
+import React from 'react'; 
+import socketClient from 'socket.io-client'; 
+import { ChannelList } from './ChannelList'; 
+import './chat.scss';
+import { MessagesPanel } from './MessagesPanel'; 
 
 const SERVER = 'http://127.0.0.1:8080'; // define the server URL
 
@@ -16,9 +16,11 @@ interface ChatState {
     channel: any; // the currently selected channel
 }
 
-// define the Chat component, which extends the React.Component class
-// and uses the ChatProps and ChatState interfaces for props and state
-export class Chat extends React.Component<ChatProps, ChatState> {
+//The code defines a React component called Chat which is responsible for rendering 
+//the chat interface and handling the communication with the server. The component 
+//has a state object that contains data about the channels, socket connection, 
+//and currently selected channel.
+export default class Chat extends React.Component<ChatProps, ChatState> {
     socket: any; // define the socket property
 
     // define the constructor, which takes in the ChatProps props argument
@@ -112,7 +114,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         this.socket.emit('send-message', {
             channel_id,
             text,
-            senderName: this.socket.id,
+            senderName: this.socket.id, //The user id is unique for every socket connection
             id: Date.now(),
         });
     };
@@ -122,8 +124,8 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         return (
             // render the component's JSX
             <div className="chat-app">
-                <ChannelList channels={this.state.channels} onSelectChannel={this.handleChannelSelect} />
-                <MessagesPanel onSendMessage={this.handleSendMessage} channel={this.state.channel} />
+                <span data-testid='channel-list'><ChannelList channels={this.state.channels} onSelectChannel={this.handleChannelSelect} /></span>
+                <span data-testid="messages-panel"><MessagesPanel onSendMessage={this.handleSendMessage} channel={this.state.channel} /></span>
             </div>
         );
     }

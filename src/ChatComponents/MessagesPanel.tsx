@@ -34,22 +34,30 @@ export function MessagesPanel(props: MessagesPanelProps) {
     list = channel.messages.map((m: any) => (
       <Message key={m.id} senderName={m.senderName} text={m.text} />
     ));
-  }  
-    // return the JSX for the component
-    return (
-      // render a div with the "messages-panel" class
-      <div className="messages-panel">
-        <div className="meesages-list">{list}</div>
-        {
-          // if there is a channel, render the input and send button
-          channel && (
-            <div className="messages-input">
-              <input type="text" onChange={handleInput} value={inputValue} />
-              <button onClick={send}>Send</button>
-            </div>
-          )
-        }
-      </div>
-    );
   }
-  
+
+  // define the handleKeyPress function
+  const handleKeyPress = (event: any) => {
+    // if the keyCode is 13 (Enter), call the send function
+    if (event.keyCode === 13) {
+      send();
+    }
+  };
+  // return the JSX for the component
+  return (
+    // render a div with the "messages-panel" class
+    <div className="messages-panel">
+      <div className="meesages-list">{list}</div>
+      {
+        // if there is a channel, render the input and send button
+        channel && (
+          <div className="messages-input">
+            <input type="text" onChange={handleInput} value={inputValue} onKeyDown={handleKeyPress} />
+            <button onClick={send}>Send</button>
+          </div>
+        )
+      }
+    </div>
+  );
+
+}

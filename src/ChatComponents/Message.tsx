@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // import the React library and the useState and useEffect hooks
+import React from 'react'; // import the React library and the useState and useEffect hooks
 
 // define the MessageProps interface
 interface MessageProps {
